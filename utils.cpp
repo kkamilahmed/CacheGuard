@@ -4,13 +4,30 @@
 #include <sstream>
 #include <unordered_map>
 #include <string>
+#include <fstream>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 #include <iostream>
  
 
 
+std::string getCurrentTimestamp() {
+    auto now = std::time(nullptr);
+    auto tm = *std::localtime(&now);
+    std::ostringstream oss;
+    oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
+    return oss.str();
+}
 
 
-
+void logToFile(const std::string& message) {
+    std::ofstream logFile("logs.txt", std::ios::app);
+    if (logFile.is_open()) {
+        logFile << "[" << getCurrentTimestamp() << "] " << message << "\n";
+        logFile.close();
+    }
+}
 
 
 

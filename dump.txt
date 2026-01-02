@@ -2,3 +2,8 @@ key	1
 key1	hi
 key2	bye
 key3	chai
+95	thorncliffe
+shafeeq	musa
+ayaan	hi
+85	park
+enter	return
