@@ -5,7 +5,15 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
-    
+ 
+
+
+
+
+
+
+
+
 void trimCRLF(std::string &s) {
     while (!s.empty() && (s.back() == '\n' || s.back() == '\r')) s.pop_back();
 }

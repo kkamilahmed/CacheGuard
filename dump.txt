@@ -1,4 +1,4 @@
-key3	chai
-key2	bye
-key1	hi
 key	1
+key1	hi
+key2	bye
+key3	chai

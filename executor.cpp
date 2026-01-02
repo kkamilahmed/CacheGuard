@@ -19,9 +19,21 @@ std::string Executor::execute(const std::string& cmdLine) {
     }
     else if (cmd == "SET") {
         std::string key, value;
-        iss >> key >> std::ws;  // Read key and skip whitespace
-        std::getline(iss, value);  // Now value has no leading space
-        storage_.set(key, value);
+        iss >> key >> std::ws; 
+        std::getline(iss, value);
+         size_t pos = value.find(" EX ");
+        if (pos != std::string::npos) {
+            std::string ttl_str = value.substr(pos + 4); 
+            value = value.substr(0, pos);               
+            int ttl = std::stoi(ttl_str); 
+            storage_.set(key, value, ttl);
+        }
+
+        else{
+            storage_.set(key, value,0);
+        }
+
+
         return "+OK\r\n";
     }
     else if (cmd == "GET") {
